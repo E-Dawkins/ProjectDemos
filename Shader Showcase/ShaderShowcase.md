@@ -1,4 +1,5 @@
 [HOME](../README.md)
+[DEMO DOWNLOAD](https://github.com/E-Dawkins/ProjectDemos/releases/tag/Shader-Showcase-Demo-v1.0)
 # Shader Showcase
 
 ## **A shader playground that you can edit and interact with in real-time. Made for the Academy of Interactive Entertainment.**
