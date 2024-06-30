@@ -17,16 +17,12 @@ Each shader below is ranked in order of difficulty with vertex manipulation bein
 ---
 
 ## Demo 1
-<video controls>
-    <source src="./assets/intersect.mp4">
-</video>
+https://github.com/E-Dawkins/ProjectDemos/assets/98858908/ea225e19-68e8-4ec1-aef4-9f183a9ff630
 
 ---
 
 ## Demo 2
-<video controls>
-    <source src="./assets/dissolve.mp4">
-</video>
+https://github.com/E-Dawkins/ProjectDemos/assets/98858908/95dbba73-7ea6-47af-9613-bd61740e5f30
 
 ---
 
