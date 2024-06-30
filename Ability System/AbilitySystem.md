@@ -150,3 +150,34 @@
 </p>
 
 ---
+
+## Devlog #2 "Blink"-in is Believing
+
+<p align="justify">
+    Shortly after writing the last devlog, the edge cases were really bugging me, so I took a step back and realized what the real issue was. Let's think about it for a second, the reason why you couldn't teleport under specific circumstances is because all the head checks failed, right? And so I looked into it, and the teleport location was being set regardless of if the player could actually teleport or not. Adding in a quick check before setting the teleport / cursor locations fixed it! Now the system is 100% reliable and works under every circumstance that I tested, now I'm sure there are some very obscure fail-cases but in normal gameplay how often would they happen? Good enough for me.
+</p>
+
+<table border="0">
+ <tr>
+    <td>
+        <p align="justify">
+            Aiming far under a platform, now leaves the teleport location in the last spot where it last passed all checks.
+        </p>
+    </td>
+    <td>
+        <p align="justify">
+            Aiming at a corner now also leaves the teleport location in the last spot where it passed all checks.
+        </p>
+    </td>
+ </tr>
+ <tr>
+    <td>
+        <img src="./assets/Dev2/Blink_UnderPlatform3.png"/>
+    </td>
+    <td>
+        <img src="./assets/Dev2/Blink_NextToEdge2.png"/>
+    </td>
+ </tr>
+</table>
+
+---
