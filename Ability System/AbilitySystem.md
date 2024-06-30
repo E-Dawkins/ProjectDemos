@@ -18,6 +18,7 @@
 ### [Devlog #2 "Blink"-ing is Believing](#devlog-2-blink-ing-is-believing-1)
 ### [Devlog #3 That's a "Far Reach" from Ordinary](#devlog-3-thats-a-far-reach-from-ordinary-1)
 ### [Devlog #4 "Bend Time", Not Your Spine](#devlog-4-bend-time-not-your-spine-1)
+### [Devlog #5 Dynamic Weapon Wheel](#devlog-5-dynamic-weapon-wheel-1)
 
 ---
 
@@ -245,5 +246,42 @@
 <div align="center">
     <img src="./assets/TEMP.png" width="80%"/>
 </div>
+
+---
+
+## Devlog #5 Dynamic Weapon Wheel
+
+<img src="./assets/Dev5/WheelItem_1.png" align="right" width="40%">
+<img src="./assets/Dev5/WheelItem_2.png" float="right" width="40%">
+
+<p align="justify">
+    Next on the list was to make a weapon wheel, but not just any weapon wheel, a dynamic weapon wheel. By dynamic I mean distributing the wheel icons evenly around the wheel, at run-time. The maths behind a dynamic weapon wheel is relatively simple, just rotate the starting position of item 0 around the wheel center by some amount. The hard part was figuring out how to create the icons at run-time and how to store the item data.
+</p>
+
+<p align="justify">
+    The creation of the wheel icons had me torn between using a button widget, or an image widget. On the one hand, the button widget had hovering built in but from testing having to hover over exactly where the icon was made the wheel finicky to use. Whereas the image approach was easier to manage, but with the obvious disadvantage of not having any hovering capabilities. After figuring out the maths to determine which icon is being pointed at, I decided to use the image widget for each wheel item and manually handle the icon switching between normal and selected.
+</p>
+
+<br/>
+
+<p align="justify">
+    After getting the creation of the items down, I had to decide which base class to use for storing the wheel item data. Eventually after exploring multiple base classes, the best option was to use the lowest level object possible, the UObject parent class. With this and a WeaponWheel class, inherited from UUserWidget, it was rather trivial to dynamically add the items at run-time and to manually handle the item hovering. All of this combined plus a not-the-best recreation of the icons from Dishonored 2 made for a pretty robust and customizable dynamic weapon wheel.
+</p>
+
+### **3 Items**
+[comment]: <> (TODO - swap for BendTimeDemo.mp4)
+<div align="center">
+    <img src="./assets/TEMP.png" width="70%"/>
+</div>
+
+<br clear="both"/>
+
+### **9 Items**
+[comment]: <> (TODO - swap for BendTimeDemo.mp4)
+<div align="center">
+    <img src="./assets/TEMP.png" width="70%"/>
+</div>
+
+<br clear="both"/>
 
 ---
