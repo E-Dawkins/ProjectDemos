@@ -16,6 +16,7 @@
 ### [Devlog #0 The Start of Something New](#devlog-0-the-start-of-something-new-1)
 ### [Devlog #1 "Blink" and You'll Miss it](#devlog-1-blink-and-youll-miss-it-1)
 ### [Devlog #2 "Blink"-ing is Believing](#devlog-2-blink-ing-is-believing-1)
+### [Devlog #3 That's a "Far Reach" from Ordinary](#devlog-3-thats-a-far-reach-from-ordinary-1)
 
 ---
 
