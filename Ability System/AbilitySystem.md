@@ -17,6 +17,7 @@
 ### [Devlog #1 "Blink" and You'll Miss it](#devlog-1-blink-and-youll-miss-it-1)
 ### [Devlog #2 "Blink"-ing is Believing](#devlog-2-blink-ing-is-believing-1)
 ### [Devlog #3 That's a "Far Reach" from Ordinary](#devlog-3-thats-a-far-reach-from-ordinary-1)
+### [Devlog #4 "Bend Time", Not Your Spine](#devlog-4-bend-time-not-your-spine-1)
 
 ---
 
@@ -204,5 +205,45 @@
 <p align="center">
     <img src="./assets/TEMP.png" width="80%"/>
 </p>
+
+---
+
+## Devlog #4 "Bend Time", Not Your Spine
+
+[comment]: <> (TODO - swap for BendTimeSlow.mp4)
+<img src="./assets/TEMP.png" align="right" width="50%"/>
+
+<p align="justify">
+    'Time' for something a little less challenging, more of a refresher if you will. "Bend Time" does as the name suggests, you can slow time and, with an ability upgrade, stop time as well, but you still move at normal speed. This was an interesting ability to implement, because how does one stop everything but the player?
+</p>
+
+<p align="justify">
+    I started off by finding a way to slow everything but the player, there are really only two ways to go about a problem like this. Either implement a component every physics body requires, to change their individual custom time dilation (yes, that exists in Unreal), but this approach requires a lot of set-up and I wanted my system to essentially be plug'n'play, with minimal set-up. The other approach was to change the global time dilation, and simply speed up the player so they appear to be moving normally.
+</p>
+
+<br/>
+
+[comment]: <> (TODO - swap for BendTimePhysicsBug.mp4)
+<img src="./assets/TEMP.png" align="left" width="50%"/>
+<img src="./assets/Dev4/1_GlobalDilation.png" align="left" width="50%"/>
+
+<p align="justify">
+    I opted for the second approach, as it was actually a relatively simple formula to work out how fast to make the player, or rather what time dilation the player required. But there were two problems with this approach, the formula 1/Global Dilation worked but what if you wanted to stop everything (i.e. Global Dilation = 0), then the result would be division by zero which is a big no-no. And the second being, what to do if time is stopped but you collide with a physics object?
+</p>
+
+<p align="justify">
+    The division-by-zero problem was relatively easy to solve, instead of setting global dilation to 0 set it to something very small like 0.0001, which would appear to stop time but in reality everything is moving extremely slowly. The collision problem was a bit harder to solve, as no matter what I tried physics objects would get accelerated to an extreme speed when time reverted back to normal. I ended up freezing the physics objects position and stopping physics simulation when the player got close to the object.
+</p>
+
+<br/>
+
+<p align="justify">
+    After many iterations of this ability, and a lot of collision testing, the ability seems to be about 95% reliable, which could be seen as negative, but I believe that this is good enough for my system. Because if I was going to be making this into a full-fledged game, I would have gone the other route with every actor having some sort of "TimeBendable" component that would be responsible for slowing / stopping each actor. See a demo video below:
+</p>
+
+[comment]: <> (TODO - swap for BendTimeDemo.mp4)
+<div align="center">
+    <img src="./assets/TEMP.png" width="80%"/>
+</div>
 
 ---
