@@ -15,6 +15,7 @@
 
 ### [Devlog #0 The Start of Something New](#devlog-0-the-start-of-something-new-1)
 ### [Devlog #1 "Blink" and You'll Miss it](#devlog-1-blink-and-youll-miss-it-1)
+### [Devlog #2 "Blink"-ing is Believing](#devlog-2-blink-ing-is-believing-1)
 
 ---
 
@@ -151,7 +152,7 @@
 
 ---
 
-## Devlog #2 "Blink"-in is Believing
+## Devlog #2 "Blink"-ing is Believing
 
 <p align="justify">
     Shortly after writing the last devlog, the edge cases were really bugging me, so I took a step back and realized what the real issue was. Let's think about it for a second, the reason why you couldn't teleport under specific circumstances is because all the head checks failed, right? And so I looked into it, and the teleport location was being set regardless of if the player could actually teleport or not. Adding in a quick check before setting the teleport / cursor locations fixed it! Now the system is 100% reliable and works under every circumstance that I tested, now I'm sure there are some very obscure fail-cases but in normal gameplay how often would they happen? Good enough for me.
