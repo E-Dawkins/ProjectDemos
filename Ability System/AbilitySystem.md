@@ -251,16 +251,28 @@
 
 ## Devlog #5 Dynamic Weapon Wheel
 
-<img src="./assets/Dev5/WheelItem_1.png" align="right" width="40%">
-<img src="./assets/Dev5/WheelItem_2.png" float="right" width="40%">
-
-<p align="justify">
-    Next on the list was to make a weapon wheel, but not just any weapon wheel, a dynamic weapon wheel. By dynamic I mean distributing the wheel icons evenly around the wheel, at run-time. The maths behind a dynamic weapon wheel is relatively simple, just rotate the starting position of item 0 around the wheel center by some amount. The hard part was figuring out how to create the icons at run-time and how to store the item data.
-</p>
-
-<p align="justify">
-    The creation of the wheel icons had me torn between using a button widget, or an image widget. On the one hand, the button widget had hovering built in but from testing having to hover over exactly where the icon was made the wheel finicky to use. Whereas the image approach was easier to manage, but with the obvious disadvantage of not having any hovering capabilities. After figuring out the maths to determine which icon is being pointed at, I decided to use the image widget for each wheel item and manually handle the icon switching between normal and selected.
-</p>
+<table border="0">
+ <tr>
+    <td>
+        <p align="justify">
+            Next on the list was to make a weapon wheel, but not just any weapon wheel, a dynamic weapon wheel. By dynamic I mean distributing the wheel icons evenly around the wheel, at run-time. The maths behind a dynamic weapon wheel is relatively simple, just rotate the starting position of item 0 around the wheel center by some amount. The hard part was figuring out how to create the icons at run-time and how to store the item data.
+        </p>
+    </td>
+     <td width="30%">
+        <img src="./assets/Dev5/WheelItem_1.png"/>
+    </td>
+ </tr>
+ <tr>
+     <td>
+        <p align="justify">
+            The creation of the wheel icons had me torn between using a button widget, or an image widget. On the one hand, the button widget had hovering built in but from testing having to hover over exactly where the icon was made the wheel finicky to use. Whereas the image approach was easier to manage, but with the obvious disadvantage of not having any hovering capabilities. After figuring out the maths to determine which icon is being pointed at, I decided to use the image widget for each wheel item and manually handle the icon switching between normal and selected.
+        </p>
+    </td>
+    <td width="30%">
+        <img src="./assets/Dev5/WheelItem_2.png"/>
+    </td>
+ </tr>
+</table>
 
 <br/>
 
