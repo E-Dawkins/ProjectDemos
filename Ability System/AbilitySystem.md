@@ -62,10 +62,8 @@
     The first ability I wanted to re-create was the iconic blink ability, a seemingly simple teleport mechanic, but oh-boy was it complex! To start with here are a few screenshots of the ability in action:
 </p>
 
-<img src="./assets/Dev1/Blink_InAir.jpg" align="left" width="49%"/>
-<img src="./assets/Dev1/Blink_IntoCrouch.jpg" align="right" width="49%"/>
-<br clear="both"/>
-<br/>
+<img src="./assets/Dev1/Blink_InAir.jpg" float="left" width="49%"/>
+<img src="./assets/Dev1/Blink_IntoCrouch.jpg" float="right" width="49%"/>
 <img src="./assets/Dev1/Blink_Mantle.jpg" align="left"width="49%"/>
 <p align="justify">
     From these screenshots you can see that the Blink ability has many edge cases. The normal use case (top-left) where the player is not aiming at a surface, and they teleport into the air. The player is aiming at a surface but there is only room to crouch (top-right), they should be teleported there but crouched. And when the player aims at an edge (bottom-left) they should teleport on top of the edge.
@@ -80,17 +78,13 @@
 <p align = "justify">
     Let's start with the easiest implementation of a teleport mechanic, where you line trace from the players' viewpoint and in the direction that they are looking. If the line trace doesn't hit a surface, easy just teleport them to the end of the line trace, but if the line trace does hit a surface, teleport them to the impact point offset by the impact normal.
 </p>
-<br/>
 
 [comment]: <> (TODO - swap for BasicTeleport.mp4)
 <img src="./assets/TEMP.png" align="left" width="50%"/>
 
-<br/>
 <p align = "justify">
     Once I had the basic "lazy" teleport working, I started researching the best way to check for the mantle-able edge. But after researching countless other implementations of the Blink mechanic, I found that none of them were truly robust, i.e. one implementation added a force upwards so the player always launched a bit higher than where they were aiming.
 </p>
-<br/>
-<br/>
 
 <p align = "justify">
     After many failed attempts at implementing the edge-mantle, I decided to break the problem down into two simple questions. What is a wall? How for are we aiming from the top of a wall?
