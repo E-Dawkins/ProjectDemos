@@ -62,7 +62,7 @@
     The first ability I wanted to re-create was the iconic blink ability, a seemingly simple teleport mechanic, but oh-boy was it complex! To start with here are a few screenshots of the ability in action:
 </p>
 
-<img src="./assets/Dev1/Blink_InAir.jpg" float="left" width="49%"/>
+<img src="./assets/Dev1/Blink_InAir.jpg" align="left" width="49%"/>
 <img src="./assets/Dev1/Blink_IntoCrouch.jpg" float="right" width="49%"/>
 <img src="./assets/Dev1/Blink_Mantle.jpg" align="left"width="49%"/>
 <p align="justify">
@@ -89,15 +89,15 @@
 <p align = "justify">
     After many failed attempts at implementing the edge-mantle, I decided to break the problem down into two simple questions. What is a wall? How for are we aiming from the top of a wall?
 </p>
+<br clear="both"/>
 <br/>
 
 <img src="./assets/Dev1/CrossProduct.png" align="right" width="50%"/>
-<br/>
 
 <p align = "justify">
     The former of these questions was actually quite simple to answer, just check the dot product between the impact normal and the global up vector. How does this help us? Well, the dot product of two vectors tells us how aligned they are, so using this knowledge we can determine that a dot product of ~0 means it is a wall. As for the latter, I came up with what I think is a robust solution, a recursive sphere trace. So, starting from the impact point I sphere trace using the up vector of this normal (more on that later), and because a sphere trace in Unreal only hits an object a single time I recall the sphere trace but offset by an amount and add all hits to an out array, the last hit in this array is the top edge and the distance to the top can be calculated.
 </p>
-​
+
 <p align = "justify">
     To determine the up vector from the normal, we first consider the normal to be the forward vector of an arbitrary local axis, then getting the cross product of the normal and the global up vector we obtain the local right vector. Then doing one more cross between the original forward vector (normal) and the local right vector we get back the local up vector. Then using this up vector we feed it into the recursive sphere trace, which was much more reliable than just using the global up vector. In the video below, the purple line is the local up vector and the spheres are the recursive trace, turning green when the player can "mantle".
 </p>
