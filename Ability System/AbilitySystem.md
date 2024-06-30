@@ -182,3 +182,26 @@
 </table>
 
 ---
+
+## Devlog #3 That's a "Far Reach" from Ordinary
+
+<img src="./assets/Dev3/MoveTowards.PNG" align="right" width="60%"/>
+
+<p align="justify">
+    The next ability on the list was very similar to the last, "Far Reach", it's essentially a teleport ability except instead of instantly teleporting to the target location you quickly rush towards it. This at first was difficult to think about, because how do you reliably rush towards an arbitrary point?
+</p>
+ 
+<p align="justify">
+    My solution was to re-create the Unity function, 'Move Towards', which as the name would suggest moves a value towards another value. The advantage of using this over something like a linear interpolation, is that it doesn't require the start point or the alpha/t value that other interpolation functions do, instead taking in the current, target and max delta.
+</p>
+
+<p align="justify">
+    Once I had the Move Towards function implemented, it was time to work on resolving the other issues of gravity and velocity carry-over. The gravity problem was solved by setting the players' gravity scale to 0 at the start of the rush and back to 1 at the end of the rush. As for the velocity carry-over, I just store the velocity before the rush, set the players' velocity to 0, and then back to stored velocity after the rush. Here's a short demo of the ability in action:
+</p>
+
+[comment]: <> (TODO - swap for FarReachDemo.mkv)
+<p align="center">
+    <img src="./assets/TEMP.png" width="80%"/>
+</p>
+
+---
