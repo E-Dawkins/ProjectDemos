@@ -26,8 +26,7 @@
 
 ## Devlog #0 The Start of Something New
 
-[comment]: <> (TODO - swap for SimpleController.mp4)
-<img src="./assets/TEMP.png" align="right" width="50%"/>
+https://github.com/E-Dawkins/ProjectDemos/assets/98858908/e267061e-f780-48da-95f7-08cb1ce3f620
 
 <p align="justify">
     The first step to re-creating the ability system from Dishonored was to make a simple player controller, and as it turns out Unreal was definitely the right choice for the job.
@@ -85,8 +84,10 @@
     Let's start with the easiest implementation of a teleport mechanic, where you line trace from the players' viewpoint and in the direction that they are looking. If the line trace doesn't hit a surface, easy just teleport them to the end of the line trace, but if the line trace does hit a surface, teleport them to the impact point offset by the impact normal.
 </p>
 
-[comment]: <> (TODO - swap for BasicTeleport.mp4)
-<img src="./assets/TEMP.png" align="left" width="50%"/>
+<br clear="both"/>
+
+https://github.com/E-Dawkins/ProjectDemos/assets/98858908/ddd99415-9438-4ccb-bdc2-2e4bdb911e08
+
 
 <p align = "justify">
     Once I had the basic "lazy" teleport working, I started researching the best way to check for the mantle-able edge. But after researching countless other implementations of the Blink mechanic, I found that none of them were truly robust, i.e. one implementation added a force upwards so the player always launched a bit higher than where they were aiming.
@@ -109,10 +110,7 @@
 </p>
 <br/>
 
-[comment]: <> (TODO - swap for MantleSphereTrace.mp4)
-<p align="center">
-    <img src="./assets/TEMP.png" width="80%"/>
-</p>
+https://github.com/E-Dawkins/ProjectDemos/assets/98858908/ae76b97a-f472-4087-baf7-25d67368490c
 
 <p align = "justify">
     After combining all these methods and implementing a comprehensive head check that takes into account the player crouching, you are left with a rather robust Blink system. There are of course some very specific edge-cases that I feel aren't worth taking the time to correct, but I'm sure it is possible with some extra checks. Below are the edge-cases that I have found.
@@ -150,10 +148,7 @@
     And after adding a few cursors, I'm only a programmer please don't judge 🙏, it now looks pretty good, complete with everything I set out to do; simple teleport, mantle teleport and teleport-into-crouch. Overall, I am really happy with how it turned out, it was an eye-opening experience into how a "simple" mechanic can actually be quite complex.
 </p>
 
-[comment]: <> (TODO - swap for BlinkGameplay.mp4)
-<p align="center">
-    <img src="./assets/TEMP.png" width="80%"/>
-</p>
+https://github.com/E-Dawkins/ProjectDemos/assets/98858908/6e2465e1-0f0e-4095-ae1e-4393b173e22a
 
 ---
 
@@ -204,21 +199,17 @@
     Once I had the Move Towards function implemented, it was time to work on resolving the other issues of gravity and velocity carry-over. The gravity problem was solved by setting the players' gravity scale to 0 at the start of the rush and back to 1 at the end of the rush. As for the velocity carry-over, I just store the velocity before the rush, set the players' velocity to 0, and then back to stored velocity after the rush. Here's a short demo of the ability in action:
 </p>
 
-[comment]: <> (TODO - swap for FarReachDemo.mkv)
-<p align="center">
-    <img src="./assets/TEMP.png" width="80%"/>
-</p>
+https://github.com/E-Dawkins/ProjectDemos/assets/98858908/bec10ee4-0b97-4a99-9a4e-1e8b6706bffa
 
 ---
 
 ## Devlog #4 "Bend Time", Not Your Spine
 
-[comment]: <> (TODO - swap for BendTimeSlow.mp4)
-<img src="./assets/TEMP.png" align="right" width="50%"/>
-
 <p align="justify">
     'Time' for something a little less challenging, more of a refresher if you will. "Bend Time" does as the name suggests, you can slow time and, with an ability upgrade, stop time as well, but you still move at normal speed. This was an interesting ability to implement, because how does one stop everything but the player?
 </p>
+
+https://github.com/E-Dawkins/ProjectDemos/assets/98858908/49e6d9dc-92fd-4e9f-b6c1-d27fa164f9a3
 
 <p align="justify">
     I started off by finding a way to slow everything but the player, there are really only two ways to go about a problem like this. Either implement a component every physics body requires, to change their individual custom time dilation (yes, that exists in Unreal), but this approach requires a lot of set-up and I wanted my system to essentially be plug'n'play, with minimal set-up. The other approach was to change the global time dilation, and simply speed up the player so they appear to be moving normally.
@@ -226,13 +217,13 @@
 
 <br/>
 
-[comment]: <> (TODO - swap for BendTimePhysicsBug.mp4)
-<img src="./assets/TEMP.png" align="left" width="50%"/>
-<img src="./assets/Dev4/1_GlobalDilation.png" align="left" width="50%"/>
-
 <p align="justify">
     I opted for the second approach, as it was actually a relatively simple formula to work out how fast to make the player, or rather what time dilation the player required. But there were two problems with this approach, the formula 1/Global Dilation worked but what if you wanted to stop everything (i.e. Global Dilation = 0), then the result would be division by zero which is a big no-no. And the second being, what to do if time is stopped but you collide with a physics object?
 </p>
+
+https://github.com/E-Dawkins/ProjectDemos/assets/98858908/65cfccb9-7852-46e3-b359-7691c7951642
+
+<img src="./assets/Dev4/1_GlobalDilation.png" align="left" width="50%"/>
 
 <p align="justify">
     The division-by-zero problem was relatively easy to solve, instead of setting global dilation to 0 set it to something very small like 0.0001, which would appear to stop time but in reality everything is moving extremely slowly. The collision problem was a bit harder to solve, as no matter what I tried physics objects would get accelerated to an extreme speed when time reverted back to normal. I ended up freezing the physics objects position and stopping physics simulation when the player got close to the object.
@@ -244,10 +235,7 @@
     After many iterations of this ability, and a lot of collision testing, the ability seems to be about 95% reliable, which could be seen as negative, but I believe that this is good enough for my system. Because if I was going to be making this into a full-fledged game, I would have gone the other route with every actor having some sort of "TimeBendable" component that would be responsible for slowing / stopping each actor. See a demo video below:
 </p>
 
-[comment]: <> (TODO - swap for BendTimeDemo.mp4)
-<div align="center">
-    <img src="./assets/TEMP.png" width="80%"/>
-</div>
+https://github.com/E-Dawkins/ProjectDemos/assets/98858908/f9e6206e-9cea-49ac-89e9-2856f584912f
 
 ---
 
@@ -283,27 +271,18 @@
 </p>
 
 ### **3 Items**
-[comment]: <> (TODO - swap for BendTimeDemo.mp4)
-<div align="center">
-    <img src="./assets/TEMP.png" width="70%"/>
-</div>
+https://github.com/E-Dawkins/ProjectDemos/assets/98858908/f3b88c3f-15ce-4200-ba07-1aeb9d610067
 
 <br clear="both"/>
 
 ### **9 Items**
-[comment]: <> (TODO - swap for BendTimeDemo.mp4)
-<div align="center">
-    <img src="./assets/TEMP.png" width="70%"/>
-</div>
+https://github.com/E-Dawkins/ProjectDemos/assets/98858908/3631ea7a-a148-406b-b970-9c8a9ac3a3d6
 
 <br clear="both"/>
 
 ---
 
 ## Devlog #6 "Devouring Swarm", Ratatouille Took a Turn
-
-[comment]: <> (TODO - swap for SwarmFX.mp4)
-<img src="./assets/TEMP.png" align="right" width="50%"/>
 
 <p align="justify">
     After finishing the weapon wheel I was stuck on what ability to re-create next. I wanted something challenging but not too hard to implement, but there was one problem, almost all the other abilities required an enemy to use. So, it was finally time to add some enemies to the game, spice it up a bit.
@@ -312,6 +291,8 @@
 <p align="justify">
     As for the swarm itself, I decided to split up the process into an AI controlled character and a swirling particle system of rats. The particle system was, for me at least, the hard part as I am a programmer not an artist. Lucky enough for me Unreal's Niagara system had the exact module I needed, the "Vortex Force" module. This module did more than I initially thought, as for some reason there is also a "Vortex Velocity" module, the key difference being that the force module also applies a force that pulls the particles towards some origin point. That module along with a rat mesh and a couple custom modules made for a pretty convincing rat swarm effect.
 </p>
+
+https://github.com/E-Dawkins/ProjectDemos/assets/98858908/7bb74754-6a2a-4845-96b7-f7c575c101e1
 
 <br clear="both"/>
 
@@ -335,17 +316,11 @@
     All of these systems (plus a nifty ghost swarm cursor) accumulated to create a pretty robust and good-looking rat swarm, that could both attack and 'devour' enemies. This whole ability was a bit different from what I usually do, combining FX with AI to create something unique, but surprisingly I enjoyed making it and found it a fun challenge  to overcome.
 </p>
 
-[comment]: <> (TODO - swap for SwarmFX_AI.mp4)
-<div align="center">
-    <img src="./assets/TEMP.png" width="80%"/>
-</div>
+https://github.com/E-Dawkins/ProjectDemos/assets/98858908/bd76a5ab-809d-46a4-bf2e-2bdd41eb05b5
 
 ---
 
 ## Devlog #7 Fixing "Bend Time", and Other Improvements
-
-[comment]: <> (TODO - swap for SnappyCrouch.mp4)
-<img src="./assets/TEMP.png" align="right" width="50%"/>
 
 <p align="justify">
     Following the "Devouring Swarm" implementation, I took a short break from this project to focus on other more important things. But when I returned to it, I realized there were several issues that needed to be addressed, the movement needed some quality-of-life changes and most importantly the "Bend Time" mechanic would consistently produce physics mishaps.
@@ -354,6 +329,8 @@
 <p align="justify">
     The first issue I had with the project was the snappy / limiting movement. To solve the limiting movement problem, I implemented a simple sliding mechanic which would allow the player to go from running into a slide and then into crouching. Just by adding this simple mechanic the player movement was considerably smoother and felt much more enjoyable to play around with. By 'snappy' movement I think its' best to show you, as you can see in the video the player camera instantly snapped from standing height to crouching height. This made the player movement feel sloppy and un-polished.
 </p>
+
+https://github.com/E-Dawkins/ProjectDemos/assets/98858908/4a2fcc28-b39c-4887-8c77-e06be6efadcc
 
 <br clear="both"/>
 
@@ -377,9 +354,6 @@
     After implementing the smoother movement and a full re-work of the freeze time mechanic, I was a lot happier with the state of my Dishonored recreation. The manager and component combo made this ability an interesting problem with an even more interesting solution, and the mechanic was similar enough to the actual Bend Time mechanic that I can happily leave it be.
 </p>
 
-[comment]: <> (TODO - swap for NewBendTime.mp4)
-<div align="center">
-    <img src="./assets/TEMP.png" width="80%"/>
-</div>
+https://github.com/E-Dawkins/ProjectDemos/assets/98858908/0a8c14de-60ed-48b7-81c3-5df51496fca5
 
 ---
