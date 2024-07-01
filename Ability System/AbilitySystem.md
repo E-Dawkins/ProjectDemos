@@ -20,6 +20,7 @@
 ### [Devlog #4 "Bend Time", Not Your Spine](#devlog-4-bend-time-not-your-spine-1)
 ### [Devlog #5 Dynamic Weapon Wheel](#devlog-5-dynamic-weapon-wheel-1)
 ### [Devlog #6 "Devouring Swarm", Ratatouille Took a Turn](#devlog-6-devouring-swarm-ratatouille-took-a-turn-1)
+### [Devlog #7 Fixing "Bend Time", and Other Improvements](#devlog-7-fixing-bend-time-and-other-improvements-1)
 
 ---
 
@@ -335,6 +336,48 @@
 </p>
 
 [comment]: <> (TODO - swap for SwarmFX_AI.mp4)
+<div align="center">
+    <img src="./assets/TEMP.png" width="80%"/>
+</div>
+
+---
+
+## Devlog #7 Fixing "Bend Time", and Other Improvements
+
+[comment]: <> (TODO - swap for SnappyCrouch.mp4)
+<img src="./assets/TEMP.png" align="right" width="50%"/>
+
+<p align="justify">
+    Following the "Devouring Swarm" implementation, I took a short break from this project to focus on other more important things. But when I returned to it, I realized there were several issues that needed to be addressed, the movement needed some quality-of-life changes and most importantly the "Bend Time" mechanic would consistently produce physics mishaps.
+</p>
+
+<p align="justify">
+    The first issue I had with the project was the snappy / limiting movement. To solve the limiting movement problem, I implemented a simple sliding mechanic which would allow the player to go from running into a slide and then into crouching. Just by adding this simple mechanic the player movement was considerably smoother and felt much more enjoyable to play around with. By 'snappy' movement I think its' best to show you, as you can see in the video the player camera instantly snapped from standing height to crouching height. This made the player movement feel sloppy and un-polished.
+</p>
+
+<br clear="both"/>
+
+<img src="./assets/Dev7/BTSystem.png" align="left" width="50%"/>
+
+<p align="justify">
+    The "Bend Time" mechanic has always been a problem ever since I started implementing it, so I thought the best thing to do was for a full re-work. I started with stripping back everything that I deemed unimportant, and migrated existing code into a new BendTimeManager. This manager would be responsible for actually driving the "Bend Time" mechanics, this manager coupled with a new component made the system much more managable and, more importantly, easily modifiable.
+</p>
+
+<p align="justify">
+    I did, however, keep the existing slow time code because that worked flawlessly, the real issue with the physics mishaps happened when I set the global time dilation to a tiny amount. The physics system would take this tiny amount, i.e. 0.00001, and apply its' inverse to each rigidbody when I set the dilation back to 1, essentially multiplying any existing velocities by 1/0.00001 = 100,000. This of course made sensitive physics bodies like the ragdoll-ed enemies go flying when time was un-frozen.
+</p>
+
+<p align="justify">
+    I decided that the best course of action was to actually freeze every object with the BendTimeComponent. This may sound trivial but let me break down a few of the common obstacles, freezing position and velocity, then retaining it afterwards, stopping AI behaviors, pausing particle systems, etc. As you can see, it required a more modular approach, and so I came up with the idea of handlers, each one taking care of one of the aforementioned obstacles, i.e. one for freezing position + velocity and one for pausing particle systems.
+</p>
+
+<br clear="both"/>
+
+<p align="justify">
+    After implementing the smoother movement and a full re-work of the freeze time mechanic, I was a lot happier with the state of my Dishonored recreation. The manager and component combo made this ability an interesting problem with an even more interesting solution, and the mechanic was similar enough to the actual Bend Time mechanic that I can happily leave it be.
+</p>
+
+[comment]: <> (TODO - swap for NewBendTime.mp4)
 <div align="center">
     <img src="./assets/TEMP.png" width="80%"/>
 </div>
