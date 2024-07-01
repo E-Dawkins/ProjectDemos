@@ -25,6 +25,7 @@
 ---
 
 ## Devlog #0 The Start of Something New
+## _25/11/2023_
 
 https://github.com/E-Dawkins/ProjectDemos/assets/98858908/e267061e-f780-48da-95f7-08cb1ce3f620
 
@@ -62,6 +63,7 @@ https://github.com/E-Dawkins/ProjectDemos/assets/98858908/e267061e-f780-48da-95f
 ---
 
 ## Devlog #1 "Blink" and You'll Miss it
+## _30/11/2023_
 
 <p align="justify">
     The first ability I wanted to re-create was the iconic blink ability, a seemingly simple teleport mechanic, but oh-boy was it complex! To start with here are a few screenshots of the ability in action:
@@ -153,6 +155,7 @@ https://github.com/E-Dawkins/ProjectDemos/assets/98858908/6e2465e1-0f0e-4095-ae1
 ---
 
 ## Devlog #2 "Blink"-ing is Believing
+## _02/12/2023_
 
 <p align="justify">
     Shortly after writing the last devlog, the edge cases were really bugging me, so I took a step back and realized what the real issue was. Let's think about it for a second, the reason why you couldn't teleport under specific circumstances is because all the head checks failed, right? And so I looked into it, and the teleport location was being set regardless of if the player could actually teleport or not. Adding in a quick check before setting the teleport / cursor locations fixed it! Now the system is 100% reliable and works under every circumstance that I tested, now I'm sure there are some very obscure fail-cases but in normal gameplay how often would they happen? Good enough for me.
@@ -184,6 +187,7 @@ https://github.com/E-Dawkins/ProjectDemos/assets/98858908/6e2465e1-0f0e-4095-ae1
 ---
 
 ## Devlog #3 That's a "Far Reach" from Ordinary
+## _04/12/2023_
 
 <img src="./assets/Dev3/MoveTowards.PNG" align="right" width="60%"/>
 
@@ -204,6 +208,7 @@ https://github.com/E-Dawkins/ProjectDemos/assets/98858908/bec10ee4-0b97-4a99-9a4
 ---
 
 ## Devlog #4 "Bend Time", Not Your Spine
+## _08/12/2023_
 
 <p align="justify">
     'Time' for something a little less challenging, more of a refresher if you will. "Bend Time" does as the name suggests, you can slow time and, with an ability upgrade, stop time as well, but you still move at normal speed. This was an interesting ability to implement, because how does one stop everything but the player?
@@ -240,6 +245,7 @@ https://github.com/E-Dawkins/ProjectDemos/assets/98858908/f9e6206e-9cea-49ac-89e
 ---
 
 ## Devlog #5 Dynamic Weapon Wheel
+## _21/12/2023_
 
 <table border="0">
  <tr>
@@ -283,6 +289,7 @@ https://github.com/E-Dawkins/ProjectDemos/assets/98858908/3631ea7a-a148-406b-b97
 ---
 
 ## Devlog #6 "Devouring Swarm", Ratatouille Took a Turn
+## _09/01/2023_
 
 <p align="justify">
     After finishing the weapon wheel I was stuck on what ability to re-create next. I wanted something challenging but not too hard to implement, but there was one problem, almost all the other abilities required an enemy to use. So, it was finally time to add some enemies to the game, spice it up a bit.
@@ -321,6 +328,7 @@ https://github.com/E-Dawkins/ProjectDemos/assets/98858908/bd76a5ab-809d-46a4-bf2
 ---
 
 ## Devlog #7 Fixing "Bend Time", and Other Improvements
+## _14/04/2023_
 
 <p align="justify">
     Following the "Devouring Swarm" implementation, I took a short break from this project to focus on other more important things. But when I returned to it, I realized there were several issues that needed to be addressed, the movement needed some quality-of-life changes and most importantly the "Bend Time" mechanic would consistently produce physics mishaps.
