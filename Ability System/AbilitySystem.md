@@ -19,6 +19,7 @@
 ### [Devlog #3 That's a "Far Reach" from Ordinary](#devlog-3-thats-a-far-reach-from-ordinary-1)
 ### [Devlog #4 "Bend Time", Not Your Spine](#devlog-4-bend-time-not-your-spine-1)
 ### [Devlog #5 Dynamic Weapon Wheel](#devlog-5-dynamic-weapon-wheel-1)
+### [Devlog #6 "Devouring Swarm", Ratatouille Took a Turn](#devlog-6-devouring-swarm-ratatouille-took-a-turn-1)
 
 ---
 
@@ -295,5 +296,47 @@
 </div>
 
 <br clear="both"/>
+
+---
+
+## Devlog #6 "Devouring Swarm", Ratatouille Took a Turn
+
+[comment]: <> (TODO - swap for SwarmFX.mp4)
+<img src="./assets/TEMP.png" align="right" width="50%"/>
+
+<p align="justify">
+    After finishing the weapon wheel I was stuck on what ability to re-create next. I wanted something challenging but not too hard to implement, but there was one problem, almost all the other abilities required an enemy to use. So, it was finally time to add some enemies to the game, spice it up a bit.
+</p>
+
+<p align="justify">
+    As for the swarm itself, I decided to split up the process into an AI controlled character and a swirling particle system of rats. The particle system was, for me at least, the hard part as I am a programmer not an artist. Lucky enough for me Unreal's Niagara system had the exact module I needed, the "Vortex Force" module. This module did more than I initially thought, as for some reason there is also a "Vortex Velocity" module, the key difference being that the force module also applies a force that pulls the particles towards some origin point. That module along with a rat mesh and a couple custom modules made for a pretty convincing rat swarm effect.
+</p>
+
+<br clear="both"/>
+
+<img src="./assets/Dev6/BloodSprayFX.gif" align="left" width="40%"/>
+
+<p align="justify">
+    Now all that was left was to make an AI that could; target enemies, devour their corpses and wander when no enemies are left. Wandering was very simple, Unreal's navigation system has a find random point in reachable radius function that, as the name suggests, finds a random point within some radius that is also reachable.
+</p>
+
+<p align="justify">
+    The targeting enemies required a bit more setup, I opted to go with an enemy manager that held a list of pointers to enemies, this list was populated at the beginning of each level. Of course, this probably isn't the most efficient way to handle an enemy manager, but it worked with minimal set-up regardless of the level. Once the enemy manager was set-up, I added a global function to find the nearest enemy to some arbitrary point, and then just like that the rats could 'attack enemies'.
+</p>
+
+<p align="justify">
+    The last step was to make a blood spray particle effect for when the rats 'ate' corpses. Again this was hard for me as I don't have that much experience using the Niagara particle system. But I knew how I wanted it to look and that made it much, much easier to develop. Essentially there's a blood spray sprite where multiple of them are spawned at a random rotation around the emitter center, growing and shrinking over their lifetime. Finally, some extra particles are spawned with a velocity in a cone upwards to add more of a 'splash' effect.
+</p>
+
+<br clear="both"/>
+
+<p align="justify">
+    All of these systems (plus a nifty ghost swarm cursor) accumulated to create a pretty robust and good-looking rat swarm, that could both attack and 'devour' enemies. This whole ability was a bit different from what I usually do, combining FX with AI to create something unique, but surprisingly I enjoyed making it and found it a fun challenge  to overcome.
+</p>
+
+[comment]: <> (TODO - swap for SwarmFX_AI.mp4)
+<div align="center">
+    <img src="./assets/TEMP.png" width="80%"/>
+</div>
 
 ---
